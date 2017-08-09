@@ -6,7 +6,7 @@ google.maps.event.addDomListener(window, 'load', function () {
     new google.maps.places.SearchBox(document.getElementById('Destination'));
     directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
 });
- 
+
 function GetRoute() {
     var houston = new google.maps.LatLng(29.7630556, -95.3630556);
     var mapOptions = {
@@ -15,23 +15,31 @@ function GetRoute() {
     };
     map = new google.maps.Map(document.getElementById('Map'), mapOptions);
     directionsDisplay.setMap(map);
- 
+
     //*********DIRECTIONS AND ROUTE**********************//
     source = document.getElementById("Source").value;
     destination = document.getElementById("Destination").value;
- 
+
     var request = {
         origin: source,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING
     };
+
+    //calc midPoint
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
+            var numberofWaypoints = response.routes[0].overview_path.length;
+            var midPoint=response.routes[0].overview_path[parseInt( numberofWaypoints / 2)];
+            var marker = new google.maps.Marker({
+              map: map,
+              position:new google.maps.LatLng(midPoint.lat(),midPoint.lng()),
+              title:'Mid Point'
+            });
         }
     });
-    
- 
+
     //*********DISTANCE AND DURATION**********************//
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix({
@@ -52,4 +60,3 @@ function GetRoute() {
         }
     });
 }
-
