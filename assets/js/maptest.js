@@ -63,7 +63,7 @@ function GetRoute() {
     $.ajax(yelp).done(function(response) {
       console.log(response);
 
-    });  
+    });
 
     console.log(yelp);
 
@@ -88,30 +88,3 @@ function GetRoute() {
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
