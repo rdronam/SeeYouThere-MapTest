@@ -47,6 +47,27 @@ function GetRoute() {
 
     console.log(newMidPoint);
 
+    //yelp requestion
+
+    var yelp = {
+      "url":"https://still-castle-31920.herokuapp.com/",
+      "method": "GET",
+      "data": {
+          "term":'restaurants',
+          "location": newMidPoint,
+          "radius": '16093',
+          "open_now": 'true',
+      }
+    }
+
+    $.ajax(yelp).done(function(response) {
+      console.log(response);
+
+    });  
+
+    console.log(yelp);
+
+
     //*********DISTANCE AND DURATION**********************//
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix({
@@ -69,19 +90,9 @@ function GetRoute() {
 }
 
 
-var yelp = {
-  "url":"https://still-castle-31920.herokuapp.com/",
-  "method": "GET",
-  "data": {
-      "term":'restaurants',
-      "location": this.newMidPoint,
-  }
-}
 
-$.ajax(yelp).done(function(response) {
-  console.log(response);
 
-});  
+
 
 
 
