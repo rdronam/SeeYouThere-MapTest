@@ -32,6 +32,8 @@ function GetRoute() {
             directionsDisplay.setDirections(response);
             var numberofWaypoints = response.routes[0].overview_path.length;
             var midPoint=response.routes[0].overview_path[parseInt( numberofWaypoints / 2)];
+            localStorage.setItem("midPoint",midPoint);
+            console.log(midPoint);
             var marker = new google.maps.Marker({
               map: map,
               position:new google.maps.LatLng(midPoint.lat(),midPoint.lng()),
@@ -39,6 +41,11 @@ function GetRoute() {
             });
         }
     });
+
+    //retrieves Midpoint from local storage and sets it as variable for future reference
+    var newMidPoint = localStorage.getItem('midPoint');
+
+    console.log(newMidPoint);
 
     //*********DISTANCE AND DURATION**********************//
     var service = new google.maps.DistanceMatrixService();
@@ -54,9 +61,46 @@ function GetRoute() {
             var distance = response.rows[0].elements[0].distance.text;
             var duration = response.rows[0].elements[0].duration.text;
             var Distance = document.getElementById("Distance");
-            Distance.innerHTML = "";
-            Distance.innerHTML += "Distance: " + distance + "<br />";
-            Distance.innerHTML += "Duration:" + duration;
+            // Distance.innerHTML = "";
+            // Distance.innerHTML += "Distance: " + distance + "<br />";
+            // Distance.innerHTML += "Duration:" + duration;
         }
     });
 }
+
+
+var yelp = {
+  "url":"https://still-castle-31920.herokuapp.com/",
+  "method": "GET",
+  "data": {
+      "term":'restaurants',
+      "location": this.newMidPoint,
+  }
+}
+
+$.ajax(yelp).done(function(response) {
+  console.log(response);
+
+});  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
