@@ -62,7 +62,9 @@ function GetRoute() {
 
     $.ajax(yelp).done(function(response) {
       console.log(response);
-      console.log(response.businesses[0]);
+
+      // console.log(response.businesses[0]);
+      // console.log(response.businesses[1]);
 
     });  
 
