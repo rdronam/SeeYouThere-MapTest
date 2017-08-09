@@ -44,8 +44,10 @@ function GetRoute() {
 
     //retrieves Midpoint from local storage and sets it as variable for future reference
     var newMidPoint = localStorage.getItem('midPoint');
+    var repMidPoint = newMidPoint.slice(1, 38);
 
-    console.log(newMidPoint);
+
+    console.log(repMidPoint);
 
     //yelp requestion
 
@@ -54,7 +56,7 @@ function GetRoute() {
       "method": "GET",
       "data": {
           "term":'restaurants',
-          "location": newMidPoint,
+          "location": repMidPoint,
           "radius": '16093',
           "open_now": 'true',
       }
@@ -62,7 +64,9 @@ function GetRoute() {
 
     $.ajax(yelp).done(function(response) {
       console.log(response);
-      console.log(response.businesses[0]);
+
+      // console.log(response.businesses[0]);
+      // console.log(response.businesses[1]);
 
       //this will be used to create the card info
       $("#r1").html(response.businesses[0].name);
