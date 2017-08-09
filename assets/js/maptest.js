@@ -66,7 +66,7 @@ function GetRoute() {
       // console.log(response.businesses[0]);
       // console.log(response.businesses[1]);
 
-    });  
+    });
 
     console.log(yelp);
 
@@ -93,30 +93,3 @@ function GetRoute() {
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
