@@ -64,11 +64,22 @@ function GetRoute() {
       console.log(response);
       console.log(response.businesses[0]);
 
+      //this will be used to create the card info
+      $("#r1").html(response.businesses[0].name);
+        $("#r1Web").attr("href", response.businesses[0].url);
+
+      $("#r2").text(response.businesses[1].name);
+          $("#r2Web").attr("href", response.businesses[1].url);
+
+      $("#r3").text(response.businesses[2].name);
+          $("#r3Web").attr("href", response.businesses[2].url);
+
+
     });
 
     console.log(yelp);
 
-    
+
 
 
     //*********DISTANCE AND DURATION**********************//
