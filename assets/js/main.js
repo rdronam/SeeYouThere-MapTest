@@ -44,10 +44,11 @@ function GetRoute() {
 
     //retrieves Midpoint from local storage and sets it as variable for future reference
     var newMidPoint = localStorage.getItem('midPoint');
-    var repMidPoint = newMidPoint.replace("(", ")");
+    var repMidPoint = newMidPoint.replace("(", "");
+    var finMidPoint = repMidPoint.replace(")", "");
 
 
-    console.log(repMidPoint);
+    console.log(finMidPoint);
 
     //yelp requestion
 
@@ -56,8 +57,8 @@ function GetRoute() {
       "method": "GET",
       "data": {
           "term":'restaurants',
-          "location": repMidPoint,
-          "radius": '16093',
+          "location": finMidPoint,
+          "radius": "8046",
           "open_now": 'true',
       }
     }
