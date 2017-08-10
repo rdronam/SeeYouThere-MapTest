@@ -58,7 +58,7 @@ function GetRoute() {
       "data": {
           "term":'restaurants',
           "location": finMidPoint,
-          "radius": "8046",
+          "radius": "4828",
           "open_now": 'true',
       }
     }
