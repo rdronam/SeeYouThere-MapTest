@@ -44,7 +44,7 @@ function GetRoute() {
 
     //retrieves Midpoint from local storage and sets it as variable for future reference
     var newMidPoint = localStorage.getItem('midPoint');
-    var repMidPoint = newMidPoint.slice(1, 38);
+    var repMidPoint = newMidPoint.replace("(", ")");
 
 
     console.log(repMidPoint);
